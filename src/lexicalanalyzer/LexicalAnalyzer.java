@@ -16,21 +16,6 @@ public class LexicalAnalyzer {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //String Location = "input.txt";   
-        //FileManager.Location = "input.txt";
-        //URL Input_url = ClassLoader.getSystemResource("input.txt");
-        //System.out.println(Input_url);
-//        File file = null;
-//        try {
-//            file = new File(FileManager.Location);
-//            LexerClass lexerClass = new LexerClass(file);
-//            List<Token> tokenList = lexerClass.generateTokens();
-//            for (int i = 0; i < tokenList.size(); i++) {
-//                System.out.println(tokenList.get(i).toString());
-//            }
-//            
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
+
     }
 }

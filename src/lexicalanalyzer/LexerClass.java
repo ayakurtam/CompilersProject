@@ -14,10 +14,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- *
- * @author Yehya Adam
- */
 public class LexerClass {
 
     int line = 1 , totalNoErrors = 0 , wordNo = 1;

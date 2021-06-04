@@ -6,6 +6,7 @@
 package lexicalanalyzer;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,19 +31,19 @@ public class StartFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTextArea = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         jButtonBrowse = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButtonCompile = new javax.swing.JButton();
         jButtonExit = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        jTextArea.setColumns(20);
+        jTextArea.setRows(5);
+        jScrollPane2.setViewportView(jTextArea);
 
         jButtonBrowse.setText("Browse");
         jButtonBrowse.addActionListener(new java.awt.event.ActionListener() {
@@ -52,8 +53,13 @@ public class StartFrame extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonBrowse);
 
-        jButton2.setText("Compile");
-        jPanel1.add(jButton2);
+        jButtonCompile.setText("Compile");
+        jButtonCompile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCompileActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonCompile);
 
         jButtonExit.setText("Exit");
         jButtonExit.addActionListener(new java.awt.event.ActionListener() {
@@ -93,16 +99,33 @@ public class StartFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
-            File file = chooser.getSelectedFile();
-            System.out.println(file);
-            FileManager.Location = file.toString();
-            FileManager.runProgram();
+        File file = chooser.getSelectedFile();
+        System.out.println(file);
+        FileManager.Location = file.toString();
+        FileManager.runProgram();
     }//GEN-LAST:event_jButtonBrowseActionPerformed
 
     private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jButtonExitActionPerformed
+
+    private void jButtonCompileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCompileActionPerformed
+        // TODO add your handling code here:
+        String holder = jTextArea.getText();
+        System.out.println(holder);
+
+        FileWriter file = null;    
+        try {
+            file = new FileWriter("textarea.txt");
+            file.write(holder);  
+            file.close();
+        } catch (IOException ex) {
+            Logger.getLogger(StartFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        FileManager.Location = "textarea.txt";
+        FileManager.runProgram();
+    }//GEN-LAST:event_jButtonCompileActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,13 +163,13 @@ public class StartFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonBrowse;
+    private javax.swing.JButton jButtonCompile;
     private javax.swing.JButton jButtonExit;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea;
     // End of variables declaration//GEN-END:variables
 }
